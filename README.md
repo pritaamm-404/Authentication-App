@@ -110,4 +110,4 @@ We welcome contributions! Please follow these steps:
 
 ## Contact
 
-For any inquiries or support, please contact trydaspritam@gmail.com (mailto:trydaspritam@gmail.com).
+For any inquiries or support, please contact [trydaspritam@gmail.com](mailto:trydaspritam@gmail.com).
