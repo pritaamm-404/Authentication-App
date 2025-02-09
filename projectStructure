@@ -1,0 +1,35 @@
+authentication-app/
+│
+├── config/
+│   ├── passport.js
+│   └── database.js
+│
+├── controllers/
+│   ├── authController.js
+│   └── userController.js
+│
+├── middleware/
+│   └── authMiddleware.js
+│
+├── models/
+│   └── User.js
+│
+├── public/
+│   ├── css/
+│   │   └── styles.css
+│   └── js/
+│       └── main.js
+│
+├── routes/
+│   └── authRoutes.js
+│
+├── views/
+│   ├── login.ejs
+│   ├── signup.ejs
+│   ├── dashboard.ejs
+│   └── forgot-password.ejs
+│
+├── .env
+├── app.js
+├── package.json
+└── README.md
