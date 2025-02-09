@@ -1,6 +1,6 @@
 /* public/css/styles.css */
 body {
-    background-color: #e7cccc;
+    background-color: #f2f2f2;
 }
 
 .card {
@@ -24,25 +24,30 @@ body {
     opacity: 0.7;
 }
 
+.btn-info {
+    color: black !important;
+}
+
 .alert {
     margin-top: 15px;
 }
 
-.navbar{
-    /* background-color: #007bff !important; */
+.navbar {
+    background-color: #cfe4fb !important;
     display: flex !important;
     flex-wrap: wrap !important;
-    justify-content: space-between !important; 
+    justify-content: space-between !important;
 }
 
-.navbar-nav{
+.navbar-nav {
     margin-left: auto !important;
     /* display: flex !important;
     flex-wrap: wrap !important; */
     gap: 30px !important;
+
 }
 
-footer{
+footer {
     background-color: #013d7e !important;
     color: white !important;
     text-align: center !important;
@@ -51,3 +56,61 @@ footer{
     bottom: 0 !important;
     width: 100% !important;
 }
+
+.googleBtn {
+    background-color: #4285F4 !important;
+    /* Google's official blue */
+    color: white !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-transform: none !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    transition: background-color 0.3s ease !important;
+    cursor: pointer !important;
+    gap: 10px !important;
+    border-radius: 20px !important;
+    /* Space between icon and text */
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+}
+
+.googleBtn:hover {
+    background-color: #357ae8 !important;
+    /* Slightly darker blue on hover */
+}
+
+.googleBtn img {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50px;
+}
+
+.loginBtn {
+    border-radius: 20px;
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+
+}
+
+
+/* 
+input {
+    padding: 10px;
+} */
+
+
+
+/* .btn .btn-danger .googleBtn {
+    border-radius: 20px;
+
+} */

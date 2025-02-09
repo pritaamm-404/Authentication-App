@@ -1,80 +1,3 @@
-// const express = require('express');
-// const passport = require('../config/passport');
-// const router = express.Router();
-// const authController = require('../controllers/authController');
-// const {
-//   ensureAuthenticated,
-//   forwardAuthenticated
-// } = require('../middleware/authMiddleware');
-
-// // Public Routes
-// router.get('/login', forwardAuthenticated, (req, res) => {
-//   res.render('login', {
-//     error: req.flash('error'),
-//     success: req.flash('success')
-//   });
-// });
-
-// router.get('/signup', forwardAuthenticated, (req, res) => {
-//   res.render('signup', {
-//     error: req.flash('error'),
-//     success: req.flash('success')
-//   });
-// });
-
-// // Authentication Routes
-// router.post('/login',
-//   passport.authenticate('local', {
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/login',
-//     failureFlash: true
-//   })
-// );
-
-// router.post('/signup', authController.signup);
-
-// // Google OAuth Routes
-// router.get('/google',
-//   passport.authenticate('google', {
-//     scope: ['profile', 'email']
-//   })
-// );
-
-// router.get('/google/callback',
-//   passport.authenticate('google', {
-//     failureRedirect: '/login',
-//     successRedirect: '/dashboard'
-//   })
-// );
-
-// // Protected Routes
-// router.get('/dashboard', ensureAuthenticated, (req, res) => {
-//   res.render('dashboard', { user: req.user });
-// });
-
-// // Logout Route
-// router.get('/logout', (req, res, next) => {
-//   req.logout((err) => {
-//     if (err) return next(err);
-//     req.flash('success', 'You are now logged out');
-//     res.redirect('/login');
-//   });
-// });
-
-// // Password Reset Routes
-// router.get('/forgot-password', forwardAuthenticated, (req, res) => {
-//   res.render('forgot-password', {
-//     error: req.flash('error'),
-//     success: req.flash('success')
-//   });
-// });
-
-// router.post('/forgot-password', authController.forgotPassword);
-// router.get('/reset-password/:token', authController.resetPasswordForm);
-// router.post('/reset-password/:token', authController.resetPassword);
-
-// module.exports = router;
-
 const User = require("../models/User"); // Import the User model
 const transporter = require("../config/nodemailer"); // Nodemailer transporter
 
@@ -115,7 +38,7 @@ exports.renderDashboard = (req, res) => {
   res.render("dashboard", { user: req.user });
 };
 
-// ** Handle Signup Logic **
+// ** Handle Signup Logic **...........................................
 exports.signup = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
