@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("./config/passport");
 const flash = require("connect-flash");
 const path = require("path");
@@ -26,8 +27,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Session Middleware
+
+//Session for MongoDB ATLAS.......
+const store = MongoStore.create({
+  mongoUrl: process.env.MONGODB_URI,
+  crypto: {
+    secret: process.env.SESSION_SECRET,
+  },
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+  console.log("Error in MONGODB SESSION STORE", err);
+});
+
+//Session for local storage MongoDB....
 app.use(
   session({
+    store,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
