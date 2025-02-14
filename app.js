@@ -5,6 +5,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("./config/passport");
 const flash = require("connect-flash");
+const cors = require("cors");
 const path = require("path");
 const googleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -25,6 +26,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // Session Middleware
 
