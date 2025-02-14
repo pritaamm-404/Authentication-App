@@ -12,13 +12,20 @@ const googleStrategy = require("passport-google-oauth20").Strategy;
 const app = express();
 
 // Database Connection
+// mongoose
+//   .connect(process.env.MONGODB_URI, {
+//     // useNewUrlParser: true,
+//     // useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("MongoDB Connected"))
+//   .catch((err) => console.log("MongoDB Connection Error:", err));
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log("MongoDB Connection Error:", err));
+  .catch((err) => {
+    console.error("MongoDB Connection Error:", err);
+    process.exit(1); // Stop the app if DB connection fails
+  });
 
 // Middleware
 app.set("view engine", "ejs");
@@ -39,7 +46,7 @@ const store = MongoStore.create({
   touchAfter: 24 * 3600,
 });
 
-store.on("error", () => {
+store.on("error", (err) => {
   console.log("Error in MONGODB SESSION STORE", err);
 });
 
@@ -95,22 +102,25 @@ app.use((req, res, next) => {
 // Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).render(
-    "error",
-    { message: err.message },
-    {
-      title: "Server Error",
-      error: process.env.NODE_ENV === "production" ? {} : err,
-      user: req.user,
-    }
-  );
+  res.status(500).render("error", {
+    title: "Server Error",
+    message: err.message,
+    error: process.env.NODE_ENV === "production" ? {} : err,
+    user: req.user,
+  });
 });
 
 // Start Server
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+//   // console.log(`Server running on port ${PORT}`);
+//   // console.log(`Visit http://localhost:${PORT}`);
+//   console.log(`Server running on port ${PORT}`);
+// });
+
+//Why? --> Render runs my app in a containerized environment, so I must explicitly bind it to 0.0.0.0, or else it won't be accessible externally.
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  // console.log(`Server running on port ${PORT}`);
-  // console.log(`Visit http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
 
