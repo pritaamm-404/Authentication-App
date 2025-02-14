@@ -15,14 +15,16 @@ body {
     color: rgb(33, 31, 31);
 }
 
-.btn-primary {
+.btn .btn-primary {
     background-color: #013d7e !important;
-    opacity: 0.9;
+    opacity: 0.9 !important;
 }
 
 .btn-primary:hover {
     opacity: 0.7;
 }
+
+
 
 .btn-info {
     color: black !important;
@@ -77,14 +79,14 @@ footer {
     border-radius: 20px !important;
     /* Space between icon and text */
 
-    &:hover {
-        filter: brightness(1.1);
-    }
+
 }
 
 .googleBtn:hover {
-    background-color: #357ae8 !important;
+    background-color: #24519a !important;
     /* Slightly darker blue on hover */
+    filter: brightness(1.1) !important;
+
 }
 
 .googleBtn img {
@@ -95,13 +97,25 @@ footer {
 
 .loginBtn {
     border-radius: 20px;
+    font-weight: bold !important;
 
     &:hover {
-        filter: brightness(1.1);
+        /* filter: brightness(1.1) !important; */
+        background-color: #24519a !important;
     }
 
 }
 
+
+.btn .btn-primary .reset {
+    background-color: #013d7e !important;
+    opacity: 0.9 !important;
+    border-radius: 20px !important;
+}
+
+.btn-primary .reset:hover {
+    opacity: 0.7;
+}
 
 /* 
 input {

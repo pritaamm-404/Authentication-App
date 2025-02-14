@@ -63,8 +63,8 @@ exports.signup = async (req, res) => {
     const mailOptions = {
       from: process.env.SENDER_EMAIL,
       to: email,
-      subject: "Welcome to App!",
-      html: `<b>Hello, ${firstName}!</b><br>Your account has been successfully created. Welcome to WanderLust!`,
+      subject: "Welcome to Authify App!",
+      html: `<b>Hello, ${firstName}!</b><br>Your account has been successfully created. <br><br>Welcome to Authify!`,
     };
     await transporter.sendMail(mailOptions);
 
@@ -110,7 +110,7 @@ exports.forgotPassword = async (req, res) => {
     const mailOptions = {
       from: process.env.SENDER_EMAIL,
       to: email,
-      subject: "Password Reset Request",
+      subject: "Password Reset Request- Authify",
       html: `<b>Hello!</b><br>You requested a password reset. Click the link below to reset your password:<br><a href="${resetUrl}">${resetUrl}</a><br>If you didn't request this, please ignore this email.`,
     };
 
